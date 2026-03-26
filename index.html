@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Donde empieza tu nombre</title>
+
+    <style>
+
+        body{
+            margin:0;
+            padding:0;
+            background:rgb(91, 175, 236);
+            color:black;
+            height:100vh;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            font-family:Arial;
+            text-align:center;
+        }
+
+        .pantalla1{
+            display:block;
+        }
+
+        .pantalla2{
+            display:none;
+            width:60%;
+            height:100vh;
+            flex-direction:column;
+            justify-content:flex-start;
+            align-items:center;
+            padding-top:80px;
+            overflow-y:auto;
+        }
+
+        .greetings span{
+            font-size:50px;
+            margin:5px;
+        }
+
+        .description{
+            margin-top:20px;
+            font-size:20px;
+        }
+
+        button{
+            margin-top:30px;
+            padding:15px 30px;
+            font-size:18px;
+            background:#ff4d6d;
+            border:none;
+            color:black;
+            border-radius:10px;
+            cursor:pointer;
+        }
+
+        .estrofa{
+            opacity:0;
+            transition:2s;
+            margin:10px;
+            font-size:25px;
+        }
+
+        .titulo{
+            font-size:35px;
+            margin-bottom:30px;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+
+<div class="pantalla1" id="inicio">
+
+    <div class="greetings">
+        <span>F</span>
+        <span>O</span>
+        <span>R,</span>
+        <span>U</span>
+        <span>♡</span>
+    </div>
+
+    <div class="description">
+        CON MUCHO AMOR
+    </div>
+
+    <button onclick="mostrarPoema()">
+        CLICK AQUÍ
+    </button>
+
+</div>
+
+<div class="pantalla2" id="poema">
+
+    <audio id="musica" preload="auto" loop>
+        <source src="cancion.mp3" type="audio/mpeg">
+    </audio>
+
+    <h1 class="estrofa titulo">Donde empieza tu nombre</h1>
+
+    <p class="estrofa">No sé en qué momento dejé de ser mía,</p>
+    <p class="estrofa">tal vez fue en tu voz rozando la mía,</p>
+    <p class="estrofa">tal vez en la forma en que el mundo callaba</p>
+    <p class="estrofa">cuando tu mirada mi nombre nombraba.</p>
+
+
+    <p class="estrofa">Hay amores que pasan como tormenta,</p>
+    <p class="estrofa">y hay otros que el tiempo jamás los ausenta,</p>
+    <p class="estrofa">pero lo nuestro no fue pasajero,</p>
+    <p class="estrofa">fue como la luna aprendiendo del cielo.</p>
+
+
+    <p class="estrofa">Porque amarte no es solo decirlo en voz baja,</p>
+    <p class="estrofa">es quedarme a vivir donde el alma trabaja,</p>
+    <p class="estrofa">es sembrar en tu pecho mis días heridos</p>
+    <p class="estrofa">y florecer juntas en sueños perdidos.</p>
+
+
+    <p class="estrofa">He sentido la vida romperse en mis manos,</p>
+    <p class="estrofa">como hojas cayendo de árboles lejanos,</p>
+    <p class="estrofa">pero cuando tus ojos tocaron los míos</p>
+    <p class="estrofa">la noche aprendió a encender sus ríos.</p>
+
+
+    <p class="estrofa">Tú no sabes lo hondo que habita tu nombre,</p>
+    <p class="estrofa">ni cómo transforma la sombra en renombre,</p>
+    <p class="estrofa">ni cómo se vuelve eterno el instante</p>
+    <p class="estrofa">cuando tu risa me salva distante.</p>
+
+
+    <p class="estrofa">Si el amor fuera solo un latido en la piel,</p>
+    <p class="estrofa">yo ya habría muerto soñando con él,</p>
+    <p class="estrofa">pero el amor es quedarte en mi historia</p>
+    <p class="estrofa">como un verso que vive en la memoria.</p>
+
+
+    <p class="estrofa">Y si el mundo algún día nos roba el destino,</p>
+    <p class="estrofa">si la noche se cierra y se pierde el camino,</p>
+    <p class="estrofa">yo seguiré pronunciándote en silencio,</p>
+    <p class="estrofa">como quien reza sin tener un templo.</p>
+
+
+    <p class="estrofa">Porque amarte es profundo, es casi infinito,</p>
+    <p class="estrofa">es guardar tu voz dentro de mi grito,</p>
+    <p class="estrofa">es saber que en la vida, pase lo que pase,</p>
+    <p class="estrofa">mi corazón empieza donde tu nombre nace.</p>
+
+    
+</div>
+
+
+<script>
+
+function mostrarPoema(){
+
+    document.getElementById("inicio").style.display="none";
+    document.getElementById("poema").style.display="flex";
+
+    let musica = document.getElementById("musica");
+    musica.currentTime = 0;
+    musica.play();
+
+    let estrofas = document.querySelectorAll(".estrofa");
+    let i = 0;
+
+    setTimeout(function(){
+
+        function mostrar(){
+
+            if(i < estrofas.length){
+                estrofas[i].style.opacity = 1;
+                i++;
+                setTimeout(mostrar, 3000);
+            }
+
+        }
+
+        mostrar();
+
+    }, 3000);
+
+}
+
+</script>
+
+</body>
+</html>
